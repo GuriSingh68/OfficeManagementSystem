@@ -17,24 +17,27 @@
                         <a href="index.html">Home</a>
                         <a href="about.html">About</a>
                         <a href="signUp.html">Sign Up</a>
-                        <a href="login.html">Login</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                 </nav>
             </div>
         </header>
         <main class="main">
-            <h2 class="para-main" style="display: flex; justify-content: center; background-color: rgb(128, 128, 128);"  > Login or Sign Up</h2>
-            <div id="main-section">
-                <div class="login">
-                    <label for="login">Login
-                        <input type="email" name="login" id="login" />
-                    </label><br/>
-                    <label for="password">Enter Password
-                        <input type="password" name="password" id="password" />
-                    </label>
-                    <p>Don't have an create Sign Up today</p>
-                    <a href="signUp.html">Sign Up Now</a>
-                </div>
+            <div class="wrapper">
+                <h1>Login</h1>
+                <form class="login">
+                    <div class="login_section">
+                        <input type="email" required="true" placeholder="Email" class="login_input" />
+                        <label for="login_input" class="login_lable">Enter Email</label>
+                    </div>
+                    <div class="password_section">
+                        <input type="password" required="true" placeholder="Password" class="password_input" />
+                        <label for="password_input" class="password_label">Enter Password</label>
+                    </div>
+                    <div>
+                        <p>New User an Create account today <a href="signUp.html" >Sign Up</p>
+                    </div>
+                </form>
             </div>
         </main>
         <footer class="footer">
