@@ -1,27 +1,50 @@
-#nav-header{
-    background-color: dimgrey;
-    overflow: hidden;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-#nav-header a{
-    float: left;
-    color: lightgreen;
-    text-align: center;
-    padding: 20px 20px;
-    font-size: medium;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-#nav-header a:hover{
-    color: red;
-    background-color: cornsilk;
-}
-body{
-    background-color: burlywood;
-}
-.signup_section{
-    float: left;
+body {
+    display: flex;
     justify-content: center;
-    text-align: center;
-    padding: 20px 20px;
+    align-items: center;
+    background: black;
+    min-height: 100vh;
+}
+.login_section {
+    position: relative;
+    width: 500px;
+    height: 100px;
+    background-color: #54fca8e5;
+    align-items: center;
+    justify-content: space-between;
+}
+.header_nav {
+    background-color: rgb(254, 6, 6);
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    float: left;
+    font-size: larger;
+}
+.login_button {
+    border: 2px solid black;
+    /* box-sizing: border-box; */
+    box-sizing: content-box;
+    z-index: 20px;
+    width: 80px;
     font-size: medium;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+.login_button:hover {
+    background-color: rgb(236, 209, 5);
+    transform: matrix3d(100%);
+}
+h1 {
+    font-size: 2em;
+    text-align: center;
 }

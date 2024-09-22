@@ -6,45 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Office Task Manager</title>
     <link rel="stylesheet" href="/css/stylesheet.css">
+    <script>
+        const test = () => {
+            alert("You Clicked")
+        }
+    </script>
 </head>
 
 <body>
     <div class="main">
-        <header class="header">
-            <div>
-                <nav class="header">
-                    <div id="nav-header">
-                        <a href="index.html">Home</a>
-                        <a href="about.html">About</a>
-                        <a href="signUp.html">Sign Up</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <main class="main">
-            <div class="wrapper">
-                <h1>Login</h1>
-                <form class="login">
-                    <div class="login_section">
-                        <input type="email" required="true" placeholder="Email" class="login_input" />
-                        <label for="login_input" class="login_lable">Enter Email</label>
-                    </div>
-                    <div class="password_section">
-                        <input type="password" required="true" placeholder="Password" class="password_input" />
-                        <label for="password_input" class="password_label">Enter Password</label>
-                    </div>
-                    <div>
-                        <p>New User an Create account today <a href="signUp.html" >Sign Up</p>
-                    </div>
-                </form>
-            </div>
-        </main>
-        <footer class="footer">
-            <div>
-                <p>&copy Carleton University</p>
-            </div>
-        </footer>
+        <div>
+            <nav class="header_nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <button class="login_button">Sign-Up</button>
+            </nav>
+        </div>
+        <div class="login_section">
+            <form action="">
+                <div class="input_login">
+                    <h1>Login</h1>
+                    <input type="email" required placeholder="abc@xyz.com">
+                    <label>Email</label>
+                <div class="input_passowrd"></div>
+                <input type="password" required>
+                <label>Password</label>
+        </div>
+        <div class="remember_checkbox">
+            <label><input type="checkbox" name="checkbox">
+                Remeber Me</label>
+        </div>
+        <div class="forget_password">
+            <label><a href="">Forget Password</a></label>
+        </div>
+        <div class="login_button">
+            <button type="submit">Login</button>
+        </div>
+        <div class="sign_up">
+            <p>Don't have an account <a href="signUp.html">Create Now</a></p>
+        </div>
+    </div>
+        </form>
+    </div>
+    <footer class="footer">
+        <div>
+            <p>&copy Carleton University</p>
+        </div>
+    </footer>
     </div>
 </body>
 
