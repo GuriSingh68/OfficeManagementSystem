@@ -3,28 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
-#nav-header a{
-    float: left;
-    color: lightgreen;
-    text-align: center;
-    padding: 20px 20px;
-    font-size: medium;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-#nav-header a:hover{
-    color: red;
-    background-color: cornsilk;
-}
-body{
-    background-color: rgb(228, 155, 59);
-}
-.signup_section{
-    float: left;
-=======
 body {
     display: flex;
->>>>>>> developer
     justify-content: center;
     align-items: center;
     background: white;
