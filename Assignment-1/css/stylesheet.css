@@ -7,10 +7,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
+    background: white;
     min-height: 100vh;
+    margin: 0;
 }
-.login_section {
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: black 0 5px 8px;
+    width: 550px;
+    padding: 20px;
+    border-color: purple;
+}
+/* .login_section {
     position: relative;
     width: 500px;
     height: 100px;
@@ -18,8 +29,9 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+ */   
 .header_nav {
-    background-color: rgb(254, 6, 6);
+    background-color: rgb(248, 157, 247);
     position: fixed;
     display: flex;
     top: 0;
@@ -29,10 +41,64 @@ body {
     justify-content: space-evenly;
     float: left;
     font-size: larger;
+    box-shadow: black 0 2px 2px;
 }
-.login_button {
+.form {
+    width: 55%;
+    padding: 20px;
+}
+h1 {
+    color: rgb(246, 17, 246);
+    margin-bottom: 20px;
+}
+p {
+    color: black;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+input, select {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+a:hover {
+    text-decoration: underline;
+    color: red;
+}
+.forget_password {
+    padding: 5px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.login_submit , .login_signup {
+  color: black;
+  width: 90px;
+  font-size: medium;
+  border:1px solid black;
+  border-radius: 5px;
+}
+.login_submit {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.sign_up{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* .login_button {
     border: 2px solid black;
-    /* box-sizing: border-box; */
+    box-sizing: border-box; 
     box-sizing: content-box;
     z-index: 20px;
     width: 80px;
@@ -47,4 +113,4 @@ body {
 h1 {
     font-size: 2em;
     text-align: center;
-}
+} */
