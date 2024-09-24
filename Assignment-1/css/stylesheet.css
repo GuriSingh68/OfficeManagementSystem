@@ -21,6 +21,12 @@ body {
     padding: 20px;
     border-color: purple;
 }
+.heading {
+    margin-top:0;
+    background-color: black;
+    text-align: center;
+    padding-top: 20px;
+}
 /* .login_section {
     position: relative;
     width: 500px;
@@ -81,20 +87,30 @@ a:hover {
     font-size: 15px;
     margin-bottom: 5px;
 }
-.login_submit , .login_signup {
+#login_submit , .login_signup , #create {
   color: black;
   width: 90px;
   font-size: medium;
   border:1px solid black;
   border-radius: 5px;
 }
-.login_submit {
+#login_submit,#create {
     margin-top: 5px;
     margin-bottom: 10px;
 }
 .sign_up{
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.phone {
+    display: flex;
+}
+.phone {
+    width: 30;
+    margin-right: 5px;
+}
+.phone input{
+width: 70%;
 }
 /* .login_button {
     border: 2px solid black;
