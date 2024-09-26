@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Board</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div class="flex">
+        <aside class="w-64 bg-white h-screen p-6">
+            <h2 class="text-lg font-large mb-4">Welcome Admin! </h2>
+            <nav class="space-y-4">
+                <a href="#" class="block py-2 text-gray-600 hover:bg-gray-200 rounded-lg">Dashboard</a>
+                <a href="#" class="block py-2 text-gray-600 hover:bg-gray-200 rounded-lg">Events</a>
+                <a href="#" class="block py-2 text-gray-600 hover:bg-gray-200 rounded-lg">Tasks</a>
+                <a href="#" class="block py-2 text-gray-600 hover:bg-gray-200 rounded-lg">Member</a>
+                <a href="#" class="block py-2 text-gray-600 hover:bg-gray-200 rounded-lg">Report</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-grow p-6">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-2xl font-large">Dashboard</h2>
+                </div>
+            </div>
+
+            <!-- Task Board -->
+            <div class="grid grid-cols-4 gap-4">
+                <!-- To Do Column -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Tasks</h3>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="text-lg font-semibold">Manager Name</h4>
+                        <div class="mt-2">
+                            <span class="bg-blue-100 text-blue-500 text-sm px-2 py-1 rounded-lg">Team 1</span>
+                            <span class="bg-green-100 text-green-500 text-sm px-2 py-1 rounded-lg">Team 2</span>
+                        </div>
+                        <p class="mt-4">Status</p>
+                        <p class="mt-4">Due Date</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-md mt-4">
+                        <h4 class="text-lg font-semibold">Task Title 2</h4>
+                        <p class="text-gray-500">Manager Name</p>
+                        <div class="mt-2">
+                            <span class="bg-purple-100 text-purple-500 text-sm px-2 py-1 rounded-lg">Team 1</span>
+                            <span class="bg-yellow-100 text-yellow-500 text-sm px-2 py-1 rounded-lg">Team 2</span>
+                        </div>
+                        <p class="mt-4">Status</p>
+                        <p class="mt-4">Due Date</p>
+                    </div>
+                </div>
+
+                <!-- In Progress Column -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Events</h3>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="text-lg font-semibold">Event Name - A</h4>
+                        <p class="text-gray-500">Daily Stand up <li class="text-gray-500 py-2">Scheduled at 3:00 pm</li></p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md mt-4">
+                        <p class="text-gray-500">Scrum Meeting
+                            <li class="text-gray-500 py-2">Scheduled at 4:00 pm</li>
+                        </p>
+                        <div class="mt-2">
+                        </div>
+                    </div>
+                </div>
+                <!-- In Review Column -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">In Review</h3>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="text-lg font-semibold">Task Title 4</h4>
+                        <p class="text-gray-500">Client #4</p>
+                        <div class="mt-2">
+                            <span class="bg-yellow-100 text-yellow-500 text-sm px-2 py-1 rounded-lg">Webflow</span>
+                            <span class="bg-green-100 text-green-500 text-sm px-2 py-1 rounded-lg">Landing Page</span>
+                        </div>
+                        <p class="mt-4">Progress: 80%</p>
+                        <div class="bg-gray-200 rounded-full h-2 w-full">
+                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Done Column -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Done</h3>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="text-lg font-semibold">Task Title 5</h4>
+                        <p class="text-gray-500">Client #5</p>
+                        <div class="mt-2">
+                            <span class="bg-green-100 text-green-500 text-sm px-2 py-1 rounded-lg">Branding</span>
+                            <span class="bg-purple-100 text-purple-500 text-sm px-2 py-1 rounded-lg">Marketing</span>
+                        </div>
+                        <p class="mt-4">Progress: 100%</p>
+                        <div class="bg-gray-200 rounded-full h-2 w-full">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
