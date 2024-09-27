@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-purple-200 flex">
+    <aside class="w-64 bg-purple-100 h-screen fixed-left-0 p-6">
+        <h2 class="text-2xl font-bold  text-black mb-4"><a href="dashboard.html" class="block py-2 text-black">Welcome
+                Admin!</a></h2>
+        <nav class="space-y-4">
+            <a href="dashboard.html" class="block py-2 text-gray-600 hover:bg-red-200 rounded-lg">Dashboard</a>
+            <a href="#" class="block py-2 text-gray-600 hover:bg-red-200 rounded-lg">Events</a>
+            <a href="tasks.html" class="block py-2 text-gray-600 hover:bg-red-200 rounded-lg">Tasks</a>
+            <a href="members.html" class="block py-2 text-gray-600 hover:bg-red-200 rounded-lg">Member</a>
+            <a href="#" class="block py-2 text-gray-600 hover:bg-red-200 rounded-lg">Report</a>
+        </nav>
+    </aside>
+    <div class=" flex justify-center items-center h-screen px-20">
+        <div class="bg-white w-full max-w-3xl p-6 rounded-lg shadow-lg ">
+            <!-- Task Header -->
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <button class="bg-gray-100 px-4 py-2 rounded text-black font-bold">Task Manager</button>
+                </div>
+            </div>
+
+            <!-- Task Name -->
+            <div class="mb-4">
+                <label for="taskName" class="font-semibold">Task Name</label>
+                <input id="taskName" type="text" placeholder="Task Name"
+                    class="w-full border border-gray-300 rounded mt-2 p-2">
+            </div>
+
+            <!-- Assignee and Dates -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="assignee" class="font-semibold">Assignee</label>
+                    <input id="assignee" type="text" placeholder="Gurwinder Singh"
+                        class="w-full border border-gray-300 rounded mt-2 p-2">
+                </div>
+                <div>
+                    <label for="assignTo" class="font-semibold">Assign to</label>
+                    <input id="assignTo" type="text" placeholder="Janvi"
+                        class="w-full border border-gray-300 rounded mt-2 p-2">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="startDate" class="font-semibold">Start Date</label>
+                    <input id="startDate" type="date" class="w-full border border-gray-300 rounded mt-2 p-2">
+                </div>
+                <div>
+                    <label for="dueDate" class="font-semibold">Due Date</label>
+                    <input id="dueDate" type="date" class="w-full border border-gray-300 rounded mt-2 p-2">
+                </div>
+            </div>
+
+            <!-- Project and Priority -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="project" class="font-semibold">Project</label>
+                    <select id="project" class="w-full border border-gray-300 rounded mt-2 p-2">
+                        <option>Team 1</option>
+                        <option>Team 2</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="priority" class="font-semibold">Priority</label>
+                    <select id="priority" class="w-full border border-gray-300 rounded mt-2 p-2">
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-4">
+                <label for="description" class="font-semibold">Description</label>
+                <textarea id="description" rows="4" placeholder="Add your description..."
+                    class="w-full border border-gray-300 rounded mt-2 p-2"></textarea>
+                <p class="text-gray-400 text-xs text-right">80/250</p>
+            </div>
+            <!-- Save Button -->
+            <div class="mt-6 text-right">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="save()">Save</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const save = (e) => {
+            e.preventDefault();
+            alert("Task created Successfully")
+        }
+    </script>
+</body>
+
+</html>
