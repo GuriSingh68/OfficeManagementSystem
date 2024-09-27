@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div class="flex">
+        <aside class="w-64 bg-purple-100 h-screen p-6">
+            <div class="flex items-center mb-8">
+                <span class="font-bold text-xl"><a href="dashboard.html">Admin</a></span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-blue-500 font-bold">Members</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-500">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold">Access and Privildege</h1>
+            </div>
+
+            <!-- Members List -->
+            <div class="bg-white shadow rounded-lg">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-4">Members</h2>
+
+                    <ul>
+                        <!-- Example member -->
+                        <li class="flex items-center justify-between py-2 border-b border-gray-200 h-50">
+                            <div class="flex items-center">
+                                <div>
+                                    <h3 class="font-medium">Gurwinder Singh</h3>
+                                    <p class="text-gray-500 text-sm"></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="role">
+                                    <label for="role-select" class="block text-gray-700 font-bold mb-2">Role:</label>
+                                    <select name="role" id="role-select"
+                                        class="w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="admin">Admin</option>
+                                        <option value="manager">Manager</option>
+                                        <option value="employee">Employee</option>
+                                    </select>
+                                </div>
+                                <button class="text-gray-500 hover:text-red-500" id="memberDetails">Add Details</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="detailsForm" class="hidden mt-4">
+                        <h2 class="text-xl font-semibold mb-4">Enter Details</h2>
+                        <form class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+                            <div class="mb-4">
+                                <label for="empId" class="block text-gray-700 font-bold mb-2">Employee ID:</label>
+                                <input type="text" id="empId" name="empId" class="w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="team" class="block text-gray-700 font-bold mb-2">Team:</label>
+                                <input type="text" id="team" name="team" class="w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-bold mb-2">Email:</label>
+                                <input type="email" 
+                         id="email" name="email" class="w-full px-3 py-2 border
+                         rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="manager" class="block text-gray-700 font-bold mb-2">Manager:</label>
+                                <input type="text" id="manager" name="manager" class="w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                            </div>
+                        
+                            <div class="flex items-center justify-end">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="submitDetails">Submit</button>   
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+    </main>
+    </div>
+<script src="/Assignment-1/JS/members.js" ></script>
+</body>
+
+</html>

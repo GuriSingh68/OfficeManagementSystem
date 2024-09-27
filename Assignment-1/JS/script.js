@@ -8,3 +8,9 @@ const signUp =(event) => {
 }
 document.getElementById("login_submit").addEventListener("click",login);
 document.getElementById("create").addEventListener("click",signUp);
+
+//For Adding Details
+document.getElementById("memberDetails").addEventListener("click",function() {
+    alert("Hello");
+  });
+
