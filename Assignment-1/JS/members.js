@@ -1,10 +1,9 @@
-document.getElementById("memberDetails").addEventListener("click",function(event) {
-    event.preventDefault();
+document.getElementById("memberDetails").addEventListener("click",function() {
     const detailForm=document.getElementById("detailsForm").classList.toggle("hidden")
   });
 
-const addMember=(e) => {
-    e.preventDefault();
+const addMember=(event) => {
+    event.preventDefault();
     alert("Successful submission");
     document.getElementById("detailsForm").classList.toggle("hidden");
 } 
