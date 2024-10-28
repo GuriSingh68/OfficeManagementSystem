@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="signup_section">
+            <h1>Sign Up</h1>
+            <p>Enter your details below: </p>
+            <form id="signupForm">
+                <label for="signup_fname">First Name</label>
+                <input type="text" required placeholder="First Name" id="signup_fname">
+                
+                <label for="signup_lname">Last Name</label>
+                <input type="text" required placeholder="Last Name" id="signup_lname">
+                
+                <label for="signup_email">Enter email</label>
+                <input type="email" required placeholder="Email" id="signup_email">
+                
+                <label for="signup_mobile">Enter Mobile Number</label>
+                <div class="phone">
+                    <select id="signup_country_code">
+                        <option value="+1">Canada/US</option>
+                        <option value="+91">India</option>
+                    </select>
+                </div>
+                <input type="tel" required placeholder="+1 123-123-1234" id="signup_mobile">
+                
+                <label for="signup_dob">Date of birth</label>
+                <input type="date" required placeholder="DD/MM/YYYY" id="signup_dob">
+                
+                <label for="signup_password">Enter Password</label>
+                <input type="password" required placeholder="Enter Password" id="signup_password">
+                
+                <label for="signup_ConfirmPassword">Confirm Password</label>
+                <input type="password" required placeholder="Confirm Password" id="signup_ConfirmPassword">
+                
+                <button type="submit" id="create">Create</button>
+                
+                <p>Already have an Account?
+                    <a href="index.html">Login</a>
+                </p>
+            </form>
+    </div>
+    <script src="/JS/signUp.js"></script>
+</body>
+
+</html>
