@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 import { AddMembersDto } from 'src/user/dto/members.dto/addMembers.dto';
 
@@ -20,7 +20,11 @@ export class AddMembersService {
         throw new NotFoundException(`Employee Id not found: ${id}`);
     }
 
-    create(user: AddMembersDto): AddMembersDto {
+    create(user: AddMembersDto): AddMembersDto | undefined {
+        const userExist=this.members.find(mem => mem.empId===user.empId)
+        if(userExist){
+             throw new ConflictException(`User already exist ${user.empId}`)
+        }
         this.members.push(user);
         return user;
     }
@@ -31,7 +35,7 @@ export class AddMembersService {
             this.members[index] = user;
             return user;
         }
-        return undefined;
+        throw new NotFoundException(`Employee ID ${id} not found.`);
     }
 
     delete(id: number): void {

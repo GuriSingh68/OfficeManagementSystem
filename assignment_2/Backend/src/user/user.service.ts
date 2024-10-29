@@ -13,7 +13,7 @@ export class UserService {
         }
         const newUser = {
             ...signUp,
-            id: this.users.length + 1, // Simple ID generation
+            id: this.users.length + 1, 
         };
 
         this.users.push(newUser);

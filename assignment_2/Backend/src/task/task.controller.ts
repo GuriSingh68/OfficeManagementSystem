@@ -1,9 +1,10 @@
-import { Body, Controller, Get, ValidationPipe, Post, HttpCode, HttpStatus, Param } from '@nestjs/common';
+import { Body, Controller, Get, ValidationPipe, Post, HttpCode, HttpStatus, Param, Patch, Delete, NotFoundException } from '@nestjs/common';
 import { AddTaskDto } from 'src/user/dto/addTask.dto/addTask.dto';
 import { ResponseTaskDto } from 'src/user/dto/addTask.dto/responseTask.dto';
 import { TaskService } from './task.service';
 import { MESSAGES } from '@nestjs/core/constants';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 
 @ApiTags("task")
 @Controller('task')
@@ -57,4 +58,30 @@ export class TaskController {
 
         };
     }
+    @Patch(':id')
+    @ApiOperation({ summary: 'Update a task' })
+    @ApiParam({ name: 'id', type: 'string', description: 'ID of the task to update' })
+    @ApiResponse({ status: 200, description: 'Task updated successfully', type: ResponseTaskDto })
+    @ApiResponse({ status: 404, description: 'Task not found' })
+    async update(@Param("id") id:string,@Body() addTaskDto:AddTaskDto): Promise< ResponseTaskDto | null>{
+        // const updated=this.eventService.update(+id,eventsReqDto);
+        const update=this.taskService.update(+id,addTaskDto);
+       if(update)
+       {
+        return update
+       }
+       throw new Error("Not found");
+    }
+    @Delete(":id")
+    @ApiOperation({ summary: 'Delete a task' })
+    @ApiParam({ name: 'id', type: 'string', description: 'ID of the task to delete' })
+    @ApiResponse({ status: 200, description: 'Task deleted successfully', type: ResponseTaskDto })
+    @ApiResponse({ status: 404, description: 'Task not found' })
+    async delete(@Param("id")id:string): Promise <ResponseTaskDto | null>{
+        const deleteTask = this.taskService.delete(+id); // Convert id to number
+    if (!deleteTask) {
+        throw new NotFoundException('Task not found'); // Throw a NotFoundException if task not found
+    }
+    return deleteTask;
+}
 }

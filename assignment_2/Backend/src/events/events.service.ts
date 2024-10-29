@@ -25,4 +25,26 @@ export class EventsService {
         this.events.push(newTask);
         return newTask
     }
+    update(id:number, eventsReqDto:EventsReqDto) : EventsResDto | null {
+        const index=this.events.findIndex(event => event.taskId===id);
+        if(index===-1){
+            return null
+        }
+        const updatedEvent: EventsResDto = {
+            ...this.events[index], 
+            ...eventsReqDto, 
+        };
+        this.events[index] = updatedEvent;
+
+        return updatedEvent;
+    }
+    delete(id: number): string | null {
+        const eventIndex = this.events.findIndex(event => event.taskId === id);
+        if (eventIndex === -1) {
+            return null; 
+        }
+        this.events.splice(eventIndex, 1);
+
+        return "Deleted Successfully";
+    }
 }

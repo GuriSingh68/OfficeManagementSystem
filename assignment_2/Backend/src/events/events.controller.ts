@@ -1,4 +1,4 @@
-import { Body, Controller, ValidationPipe, Post, Get, Query, Param } from '@nestjs/common';
+import { Body, Controller, ValidationPipe, Post, Get, Query, Param, Patch, Delete } from '@nestjs/common';
 import { EventsReqDto } from 'src/user/dto/events.dto/eventsReq.dto';
 import { EventsService } from './events.service';
 import { EventsResDto } from 'src/user/dto/events.dto/eventsRes.dto';
@@ -26,5 +26,18 @@ export class EventsController {
     async create(@Body(ValidationPipe) eventsDto: EventsReqDto): Promise<EventsResDto> {
         const events = await this.eventService.create(eventsDto);
         return events;
+    }
+    @Patch(":id")
+    @ApiBody({type:EventsReqDto})
+    @ApiResponse({status:201, description:"Update  Successful"})
+    async update(@Param("id") id:string,@Body() eventsReqDto:EventsReqDto): Promise<String | null>{
+        const updated=this.eventService.update(+id,eventsReqDto);
+        return "Updated Successfully";
+    }
+    @Delete(":id")
+    @ApiResponse({status:201, description:"Deletion Successfully"})
+    async delete(@Param("id") id:string): Promise<String | null> {
+        const deleteEvent=this.eventService.delete(+id);
+        return "Deleted Succesfully"
     }
 }

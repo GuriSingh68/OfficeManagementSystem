@@ -30,5 +30,27 @@ export class TaskService {
         return newTask;
     }
     
-  
+  update(id:number,addTaskDto:AddTaskDto): ResponseTaskDto | null{
+    const taskIndex=this.tasks.findIndex(task => task.id===id);
+    if(taskIndex===-1){
+        return null;
+    }
+    const updatedTask: ResponseTaskDto = {
+        id:this.tasks[taskIndex].id,
+        ...this.tasks[taskIndex], 
+        ...addTaskDto, 
+    };
+    this.tasks[taskIndex] = updatedTask;
+    return updatedTask
+  }
+  delete(id: number): ResponseTaskDto | null {
+    const taskIndex = this.tasks.findIndex(task => task.id === id);
+    if (taskIndex === -1) {
+        return null; 
+    }
+
+    const deletedTask = this.tasks[taskIndex]; 
+    this.tasks.splice(taskIndex, 1); 
+    return deletedTask;
+  }
 }
