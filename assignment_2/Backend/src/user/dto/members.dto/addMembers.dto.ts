@@ -1,17 +1,28 @@
-import { IsEmail, IsEnum, IsInt, IsNotEmpty, IsString } from "class-validator";
+import { Prop } from '@nestjs/mongoose';
+import { IsEmail, IsEnum, IsInt, IsNotEmpty, IsString } from 'class-validator';
 
 export class AddMembersDto {
-    // @IsNotEmpty() @IsString()
-     name: string;
-    // @IsNotEmpty() @IsInt() 
-    empId: number;  // Renamed from employeeId to empId
-    // @IsNotEmpty() @IsString()
-     team: string;
-    // @IsNotEmpty() @IsEmail()
-     email: string;
-    // @IsNotEmpty() @IsString()
-     manager: string;
-    // @IsNotEmpty() 
-    role: "admin" | "manager" | "employee"
-  }
-  
+    @IsNotEmpty()
+    @IsString()
+    name: string;
+
+    @IsNotEmpty()
+    @IsInt()
+    empId: number; 
+
+    @IsNotEmpty()
+    @IsEmail()
+    emailId: string;
+
+    @IsNotEmpty()
+    @IsString()
+    team: string;
+
+    @IsNotEmpty()
+    @IsString()
+    manager: string;
+
+    @Prop({ required: true, enum: ["admin", "manager", "Employee"], default: "Employee" })
+  role: string;
+
+}

@@ -1,56 +1,47 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { create } from 'domain';
+import { InjectModel } from '@nestjs/mongoose';
 import { AddTaskDto } from 'src/user/dto/addTask.dto/addTask.dto';
-import { ResponseTaskDto } from 'src/user/dto/addTask.dto/responseTask.dto';
+import { Task } from './schemas/task.schema';
+import { Model } from 'mongoose';
+import { customAlphabet } from "nanoid";
 
 @Injectable()
 export class TaskService {
-    // private task: {id:number; task: AddTaskDto}[]=[];
-    private tasks: ResponseTaskDto[]=[]
-    private current:number=1;
 
-    findAll() {
-       return this.tasks;
-    }
-    findById(taksId:number){
-        const res=this.tasks.find(user => user.id===taksId);
-        if(!res){
-            throw new NotFoundException("Task Id not found")
-        }
-        return res;
-    }
-    
-    create(task:AddTaskDto):ResponseTaskDto {
-        const newTask : ResponseTaskDto = { 
-            id:this.current,
-            ...task
-        }
-        this.tasks.push(newTask);
-        this.current++;
-        return newTask;
-    }
-    
-  update(id:number,addTaskDto:AddTaskDto): ResponseTaskDto | null{
-    const taskIndex=this.tasks.findIndex(task => task.id===id);
-    if(taskIndex===-1){
-        return null;
-    }
-    const updatedTask: ResponseTaskDto = {
-        id:this.tasks[taskIndex].id,
-        ...this.tasks[taskIndex], 
-        ...addTaskDto, 
-    };
-    this.tasks[taskIndex] = updatedTask;
-    return updatedTask
-  }
-  delete(id: number): ResponseTaskDto | null {
-    const taskIndex = this.tasks.findIndex(task => task.id === id);
-    if (taskIndex === -1) {
-        return null; 
+    constructor(@InjectModel(Task.name) private readonly taskModel: Model<Task>) {}
+
+    async findAll() {
+        return this.taskModel.find().limit(10).exec();
     }
 
-    const deletedTask = this.tasks[taskIndex]; 
-    this.tasks.splice(taskIndex, 1); 
-    return deletedTask;
-  }
+    async findById(id: string): Promise<Task> {
+        const task = await this.taskModel.findById(id);
+        if (!task) {
+            throw new NotFoundException(`Task with ID ${id} not found`);
+        }
+        return task;
+    }
+
+    async create(taskDto: AddTaskDto) {
+        const createdTask = new this.taskModel(taskDto); 
+        return await createdTask.save();
+    }
+
+    async update(id: string, addTaskDto: AddTaskDto) {
+        const updatedTask = await this.taskModel
+            .findOneAndUpdate({ _id: id }, { $set: addTaskDto }, { new: true })
+            .exec();
+        if (!updatedTask) {
+            throw new NotFoundException("Task not found");
+        }
+        return updatedTask;
+    }
+
+    async delete(id: string) {
+        const deletedTask = await this.taskModel.findOneAndDelete({_id: id }).exec();
+        if (!deletedTask) {
+            throw new NotFoundException("Task not found");
+        }
+        return deletedTask;
+    }
 }

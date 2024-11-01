@@ -18,26 +18,26 @@ export class EventsController {
     @ApiResponse({ status: 200, description: 'Retrieve a task by ID.' })
     @ApiResponse({ status: 404, description: 'Task not found.' })
     async findById(@Param("id")id:string) {
-        return this.eventService.findById(+id);
+        return this.eventService.findById(id);
     }
     @Post()
     @ApiBody({type:EventsReqDto})
     @ApiResponse({status:201, description:"Event Created Successfully"})
-    async create(@Body(ValidationPipe) eventsDto: EventsReqDto): Promise<EventsResDto> {
+    async create(@Body(ValidationPipe) eventsDto: EventsReqDto): Promise<String> {
         const events = await this.eventService.create(eventsDto);
-        return events;
+        return `Event created Successfully - ${events._id}`;
     }
     @Patch(":id")
     @ApiBody({type:EventsReqDto})
     @ApiResponse({status:201, description:"Update  Successful"})
     async update(@Param("id") id:string,@Body() eventsReqDto:EventsReqDto): Promise<String | null>{
-        const updated=this.eventService.update(+id,eventsReqDto);
-        return "Updated Successfully";
+        const updated=this.eventService.update(id,eventsReqDto);
+        return `Event Updated Successfully`
     }
     @Delete(":id")
     @ApiResponse({status:201, description:"Deletion Successfully"})
     async delete(@Param("id") id:string): Promise<String | null> {
-        const deleteEvent=this.eventService.delete(+id);
+        const deleteEvent=this.eventService.delete(id);
         return "Deleted Succesfully"
     }
 }
