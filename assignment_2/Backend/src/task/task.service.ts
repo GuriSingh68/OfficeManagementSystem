@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { AddTaskDto } from 'src/user/dto/addTask.dto/addTask.dto';
 import { Task } from './schemas/task.schema';
 import { Model } from 'mongoose';
-import { customAlphabet } from "nanoid";
 
 @Injectable()
 export class TaskService {
