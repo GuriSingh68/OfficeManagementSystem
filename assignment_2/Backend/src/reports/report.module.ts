@@ -1,6 +1,5 @@
-// src/reports/report.module.ts
 import { Module } from '@nestjs/common';
-import { ReportsService } from './report.service'; // Ensure correct path
+import { ReportsService } from './report.service'; 
 import { ReportController } from './report.controller';
 
 @Module({
