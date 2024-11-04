@@ -44,8 +44,8 @@ export class TaskController {
                     example: 'Task Created Successfully',
                 },
                 taskId: {
-                    type: 'string', // Changed to string
-                    example: 'abc123', // Example of generated ID
+                    type: 'string', 
+                    example: 'abc123', 
                 },
             },
         },

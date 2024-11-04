@@ -1,7 +1,11 @@
-// src/reports/dto/create-report.dto.ts
+import { IsNotEmpty, IsString } from "class-validator";
+
 export class CreateReportDto {
-    title: string;
-    content: string;
-    createdAt: Date;
-  }
-  
+  @IsNotEmpty()
+  @IsString()
+  title: string;
+  @IsNotEmpty()
+  @IsString()
+  content: string;
+  createdAt: Date;
+}

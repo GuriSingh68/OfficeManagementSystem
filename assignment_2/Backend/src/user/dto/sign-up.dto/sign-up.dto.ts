@@ -14,8 +14,7 @@ export class SignUpDto {
     email: string;
 
     @IsNotEmpty()
-    @IsMobilePhone('en-CA') // You can specify locale if needed, e.g., 'en-US'
-    mobile: string; // Change to string for better phone number handling
+    mobile: string; 
 
     @IsNotEmpty()
     @IsDateString()

@@ -8,7 +8,7 @@ export class AddMembersDto {
 
     @IsNotEmpty()
     @IsInt()
-    empId: number; 
+    empId: string; 
 
     @IsNotEmpty()
     @IsEmail()

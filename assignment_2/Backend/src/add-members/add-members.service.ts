@@ -15,14 +15,12 @@ export class AddMembersService {
         return this.membersModel.find().limit(10).exec();
     }
 
-    async findOneById(id: string){
-
-        const member=await this.membersModel.findById(id).exec();
-        if(!member){
-            throw new NotFoundException("Member not found")
+    async findOneByEmpId(empId: string): Promise<Member> {
+        const member = await this.membersModel.findOne({ empId });
+        if (!member) {
+            throw new NotFoundException('Member not found');
         }
-        return member
-
+        return member;
     }
 
    async create(user: AddMembersDto):Promise<Member> {
@@ -30,17 +28,17 @@ export class AddMembersService {
        return await addMem.save();
     }
 
-   async update(id: string, user: AddMembersDto) {
-        const update=await this.membersModel.findByIdAndUpdate({_id:id},{$set:user},{new:true}).exec();
+   async update(empId: string, user: AddMembersDto) {
+        const update=await this.membersModel.findOneAndUpdate({empId:empId},{$set:user},{new:true}).exec();
         if(!update)
             throw new NotFoundException("User not found")
         return update;
     }
 
-   async delete(id: string) {
-       const memb=await this.membersModel.findByIdAndDelete(id);
-       if(!memb)
-            throw new NotFoundException("User not found")
-        return memb;
+    async deleteByEmpId(empId: string) {
+        const member = await this.membersModel.findOneAndDelete({ empId }).exec();
+        if (!member) throw new NotFoundException('User not found');
+        
+        return member;
     }
 }
