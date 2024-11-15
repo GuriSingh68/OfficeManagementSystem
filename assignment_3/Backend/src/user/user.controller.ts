@@ -2,25 +2,33 @@ import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, UseGu
 import { UserService } from './user.service';
 import { ApiTags, ApiResponse, ApiOperation, ApiParam } from '@nestjs/swagger';
 import { Roles } from 'src/decorators/roles.decorator';
-import { UpdateUserDto } from './dto/userDto/updateUser.dto';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { RoleGuard } from 'src/guard/role.guard';
+import { SignUpDto } from 'src/auth/dto/signup.dto';
 
 @ApiTags('user')
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}
     @Get()
-    @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard,RoleGuard)
+    @Roles('admin','manager')
     @ApiOperation({ summary: 'Get all users' })
     @ApiResponse({ status: 200, description: 'Successfully retrieved users' })
     async getUsers() {
-        return this.userService.findAll();
+        const userList=await this.userService.findAll();
+        if(userList.length==0){
+            return {
+                message:"List is empty"
+            }
+        }
+        return userList;
     }
 
 
     @Get('email/:email')
-    @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard,RoleGuard)
+    @Roles('admin','manager')
     @ApiOperation({ summary: 'Get user by email' })
     @ApiParam({ name: 'email', description: 'Email address of the user to retrieve' })
     @ApiResponse({ status: 200, description: 'Successfully retrieved the user by email' })
@@ -28,7 +36,9 @@ export class UserController {
     async getUserByEmail(@Param('email') email: string) {
         const user = await this.userService.findByEmail(email);
         if (!user) {
-            throw new Error('User not found'); // Handle user not found case
+            return {
+                message:"User not found"
+            }
         }
         return user;
     }
@@ -40,7 +50,7 @@ export class UserController {
     @ApiParam({ name: 'id', description: 'ID of the user to update' })
     @ApiResponse({ status: 200, description: 'User updated successfully' })
     @ApiResponse({ status: 404, description: 'User not found' })
-    async updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    async updateUser(@Param('id') id: string, @Body() updateUserDto: SignUpDto) {
         const user = await this.userService.update(id, updateUserDto);
         if (!user) {
             throw new BadRequestException('User not found');

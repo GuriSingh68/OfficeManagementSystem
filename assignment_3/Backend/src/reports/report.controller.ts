@@ -41,8 +41,8 @@ export class ReportController {
   @ApiResponse({ status: 201, description: 'File uploaded successfully' })
   @ApiResponse({ status: 400, description: 'Only PDF files are allowed' })
   @Post('upload')
-  @Roles('admin')
-    @UseGuards(AuthGuard, RoleGuard)
+  @Roles('admin','user')
+    @UseGuards(AuthGuard,RoleGuard)
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({

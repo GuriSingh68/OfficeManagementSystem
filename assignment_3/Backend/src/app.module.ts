@@ -12,12 +12,13 @@ import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from './guard/auth.guard';
 import { RoleGuard } from './guard/role.guard';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [JwtModule.register({
      global:true,
     secret:"123"
-  }),AuthModule, AddMembersModule, TaskModule, EventsModule,ReportsModule,FeedbackModule,TaskModule,MongooseModule.forRoot('mongodb://localhost:27017/OfficeManagement'),],
+  }),AuthModule, AddMembersModule, TaskModule, EventsModule,ReportsModule,FeedbackModule,TaskModule,UserModule,MongooseModule.forRoot('mongodb://localhost:27017/OfficeManagement'),],
   controllers: [AppController],
   providers: [AppService,
   AuthGuard,RoleGuard],

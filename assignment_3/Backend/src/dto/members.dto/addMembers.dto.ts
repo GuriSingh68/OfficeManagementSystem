@@ -22,7 +22,7 @@ export class AddMembersDto {
     @IsString()
     manager: string;
 
-    @Prop({ required: true, enum: ["admin", "manager", "Employee"], default: "Employee" })
+    @IsEnum({ required: true, enum: ["admin", "manager", "user"], default: "user" })
   role: string;
 
 }

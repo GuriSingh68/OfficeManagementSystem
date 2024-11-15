@@ -20,7 +20,13 @@ export class TaskController {
         type: String,
     })
     async findAll() {
-        return this.taskService.findAll();
+        const list=await this.taskService.findAll();
+        if(list.length==0){
+            return {
+                message:"No tasks in the list"
+            }
+        }
+        return list;
     }
 
     @Get(":id")
@@ -32,10 +38,16 @@ export class TaskController {
         type: String,
     })
     async findById(@Param("id") id: string) {
-        return this.taskService.findById(id); 
+        const user=await this.taskService.findById(id); 
+        if(!user){
+            return {
+                message:"User not found"
+            }
+        }
+        return user;
     }
     @Post("create")
-    @Roles('admin')
+    @Roles('admin','manager')
     @UseGuards(AuthGuard, RoleGuard)
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: "Creating Task" })
@@ -65,7 +77,7 @@ export class TaskController {
     }
 
     @Patch(':id')
-    @Roles('admin')
+    @Roles('admin','user','manager')
     @UseGuards(AuthGuard, RoleGuard)
     @ApiOperation({ summary: 'Update a task' })
     @ApiParam({ name: 'id', type: 'string', description: 'ID of the task to update' })

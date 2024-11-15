@@ -15,8 +15,7 @@ export class FeedbackController {
     @ApiResponse({ status: 201, description: 'Feedback successfully submitted.' })
     @ApiResponse({ status: 400, description: 'Invalid input data.' })
     @Post('submit')
-    @Roles('admin')
-    @UseGuards(AuthGuard, RoleGuard)
+    @UseGuards(AuthGuard)
     async submitFeedback(@Body() feedbackDto: CreateFeedbackDto) {
         return this.feedbackService.createFeedback(feedbackDto);
     }

@@ -43,11 +43,14 @@ export class AddMembersController {
         return newMember
     }
     @Patch('empId/:empId')
-    @Roles('admin')
+    
     @UseGuards(AuthGuard, RoleGuard)
+    @Roles('admin')
     @ApiOperation({ summary: 'Updating a member' })
     @ApiParam({ name: 'empId', required: true, description: 'Employee ID' })
-    @ApiBody({ type: AddMembersDto })
+    @ApiBody({ type: AddMembersDto
+
+     })
     @ApiResponse({ status: 200, description: 'Member updated Successfully.' })
     @ApiResponse({ status: 404, description: 'User not found.' })
     async update(@Param('empId') empId: string, @Body() user: AddMembersDto) {

@@ -16,8 +16,8 @@ export class AuthGuard implements CanActivate {
 
     try {
       const payload = this.jwtService.verify(token);
-      request['userId'] = payload.userId;  // Attach the userId to the request
-      request['role'] = payload.role;      // Attach the role to the request
+      request['userId'] = payload.userId;  
+      request['role'] = payload.role;     
     } catch (error) {
       Logger.error(error.message);
       throw new UnauthorizedException('Invalid Token');

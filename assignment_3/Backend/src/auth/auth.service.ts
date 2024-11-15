@@ -8,7 +8,6 @@ import {v4 as uuid4} from 'uuid'
 import * as bcrypt from "bcrypt"
 import { LoginDto } from './dto/login.dto';
 import { RefreshToken } from './Schema/Refresh.schema';
-import { CreateUserDto } from './dto/createUser.dto';
 
 @Injectable()
 export class AuthService {

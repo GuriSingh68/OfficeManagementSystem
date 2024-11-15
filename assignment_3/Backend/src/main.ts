@@ -12,12 +12,7 @@ async function bootstrap() {
     .addTag('Task')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,  
-    forbidNonWhitelisted: true,
-    transform: true 
-}));
+  SwaggerModule.setup('api', app, document); 
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

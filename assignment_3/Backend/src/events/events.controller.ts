@@ -16,7 +16,12 @@ export class EventsController {
     @UseGuards(AuthGuard)
     @ApiResponse({ status: 200, description: 'Retrieve all events.' })
     async findAll() {
-        return this.eventService.findAll();
+        const list=await this.eventService.findAll();
+        if(list.length==0){
+            return {
+                message:"No events in the list"
+            }
+        }
     }
     @Get(":id")
     @UseGuards(AuthGuard) 
@@ -24,10 +29,15 @@ export class EventsController {
     @ApiResponse({ status: 200, description: 'Retrieve a task by ID.' })
     @ApiResponse({ status: 404, description: 'Task not found.' })
     async findById(@Param("id")id:string) {
-        return this.eventService.findById(id);
+        const user=await this.eventService.findById('id');
+        if(!user){
+            return {
+                message:"User not found"
+            }
+        }
     }
     @Post()
-    @Roles('admin')
+    @Roles('admin','manager')
     @UseGuards(AuthGuard, RoleGuard)
     @ApiBody({type:EventsReqDto})
     @ApiResponse({status:201, description:"Event Created Successfully"})
@@ -36,20 +46,20 @@ export class EventsController {
         return `Event created Successfully - ${events._id}`;
     }
     @Patch(":id")
-    @Roles('admin')
+    @Roles('admin','manager')
     @UseGuards(AuthGuard, RoleGuard)
     @ApiBody({type:EventsReqDto})
     @ApiResponse({status:201, description:"Update  Successful"})
     async update(@Param("id") id:string,@Body() eventsReqDto:EventsReqDto): Promise<String | null>{
-        const updated=this.eventService.update(id,eventsReqDto);
-        return `Event Updated Successfully`
+        const updated=await this.eventService.update(id,eventsReqDto);
+        return `Event Updated Successfully - ${updated.timeStamp}`
     }
     @Delete(":id")
     @Roles('admin')
     @UseGuards(AuthGuard, RoleGuard)
     @ApiResponse({status:201, description:"Deletion Successfully"})
     async delete(@Param("id") id:string): Promise<String | null> {
-        const deleteEvent=this.eventService.delete(id);
+        const deleteEvent=await this.eventService.delete(id);
         return "Deleted Succesfully"
     }
 }
