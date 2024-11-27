@@ -62,3 +62,4 @@ export const updateUsers = async(id:string,updatedData: Partial<UserInterface>) 
         }
     }
 }
+
