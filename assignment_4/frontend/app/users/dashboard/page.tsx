@@ -28,5 +28,8 @@ export default function Page({children}:{
       );
   }
 
-  return <Dashboard />;
+  return <>
+  <Header />
+  <Dashboard />
+  </>;
 }
