@@ -50,13 +50,13 @@ const ShowMembers = () => {
 
     }
     const handleSave = async (id: string) => {
-        const update_user = users.find((user) => user._id === id);
+        const update_user = editable.find((user) => user._id === id);
         if (update_user) {
             try {
                 await updateUsers(id, update_user);
                 setUsers((prev) =>
                     prev.map((user) => (
-                        user._id === id ? { ...update_user } : user
+                        user._id === id ? {...user, ...update_user } : user
                     )))
                 alert("User updated successfully")
             } catch (error) {
