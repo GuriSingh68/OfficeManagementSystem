@@ -7,11 +7,9 @@ export class EventsReqDto {
     title: string;
 
     @IsNotEmpty()
-    @IsDateString()
     startDate: string;
 
     @IsNotEmpty()
-    @IsDateString()
     endDate: string;
 
     @IsArray()

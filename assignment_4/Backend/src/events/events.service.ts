@@ -14,15 +14,15 @@ export class EventsService {
             throw new NotFoundException("No Data found")
         return events;
     }
-   async findById(id:string){
-        const events=await this.eventsModel.findById(id);
+   async findById(_id:string){
+        const events=await this.eventsModel.findById(_id);
         if(!events)
             throw new NotFoundException("Data not found")
         return events;
     }
     async create(events:EventsReqDto) {
         const event=new this.eventsModel(events);
-        return event.save();
+        return await event.save();
     }
     async update(id:string, eventsReqDto:EventsReqDto)  {
        const e=await this.eventsModel.findByIdAndUpdate({_id:id},{$set:eventsReqDto},{new:true});

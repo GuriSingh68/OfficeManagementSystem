@@ -68,7 +68,7 @@ export class TaskController {
             },
         },
     })
-        async create(@Body(ValidationPipe) taskDto: AddTaskDto) {
+        async create(@Body(new ValidationPipe) taskDto: AddTaskDto) {
         const task = await this.taskService.create(taskDto);
         return {
             message: 'Task Created Successfully',

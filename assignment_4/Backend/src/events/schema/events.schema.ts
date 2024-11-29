@@ -8,10 +8,10 @@ export class Event extends Document {
     title: string;
 
     @Prop({ required: true })
-    startDate: Date;
+    startDate: string;
 
     @Prop({ required: true }) 
-    endDate: Date;
+    endDate: string;
 
     @Prop({ type: [String], required: true })
     attendeesEmails: string[];

@@ -22,28 +22,30 @@ export class EventsController {
                 message:"No events in the list"
             }
         }
+		return list;
     }
-    @Get(":id")
+    @Get(":_id")
     @UseGuards(AuthGuard) 
     @ApiParam({ name: 'id', required: true, description: 'Task ID' })
     @ApiResponse({ status: 200, description: 'Retrieve a task by ID.' })
     @ApiResponse({ status: 404, description: 'Task not found.' })
-    async findById(@Param("id")id:string) {
-        const user=await this.eventService.findById('id');
+    async findById(@Param("id")_id:string) {
+        const user=await this.eventService.findById('_id');
         if(!user){
             return {
                 message:"User not found"
             }
         }
+		return user;
     }
     @Post()
     @Roles('admin','manager')
     @UseGuards(AuthGuard, RoleGuard)
     @ApiBody({type:EventsReqDto})
     @ApiResponse({status:201, description:"Event Created Successfully"})
-    async create(@Body(ValidationPipe) eventsDto: EventsReqDto): Promise<String> {
+    async create(@Body(ValidationPipe) eventsDto: EventsReqDto): Promise<any> {
         const events = await this.eventService.create(eventsDto);
-        return `Event created Successfully - ${events._id}`;
+        return events;
     }
     @Patch(":id")
     @Roles('admin','manager')
