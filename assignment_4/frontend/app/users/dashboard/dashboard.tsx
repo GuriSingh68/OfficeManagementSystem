@@ -17,7 +17,7 @@ const Dashboard = () => {
                     <Link href="#" passHref className='block py-3 text-gray-700 hover:bg-red-200 rounded-lg'>
                         Dashboard
                     </Link>
-                    <Link href="/events" passHref className='block py-3 text-gray-700 hover:bg-red-200 rounded-lg'>
+                    <Link href="/users/events" passHref className='block py-3 text-gray-700 hover:bg-red-200 rounded-lg'>
                         Events
                     </Link>
                     <Link href="/users/task" passHref className='block py-3 text-gray-700 hover:bg-red-200 rounded-lg'>

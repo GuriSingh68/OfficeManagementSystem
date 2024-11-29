@@ -13,7 +13,6 @@ export const fetchUsers = async() => {
                 }
             });
         const response=await data.json();
-        console.log(response)
         if(!response){
             throw new Error(`Failed - ${response.message}`)
         }
