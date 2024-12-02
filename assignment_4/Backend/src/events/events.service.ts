@@ -14,8 +14,8 @@ export class EventsService {
             throw new NotFoundException("No Data found")
         return events;
     }
-   async findById(_id:string){
-        const events=await this.eventsModel.findById(_id);
+   async findById(id:string){
+        const events=await this.eventsModel.findById(id);
         if(!events)
             throw new NotFoundException("Data not found")
         return events;

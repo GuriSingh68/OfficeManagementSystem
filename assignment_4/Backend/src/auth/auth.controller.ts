@@ -14,7 +14,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Create a new user account' })
   @ApiResponse({ status: 201, description: 'User created successfully' })
   @ApiResponse({ status: 400, description: 'Validation errors' })
-  async signup(@Body() signup: SignUpDto) {
+  async signup(@Body(ValidationPipe) signup: SignUpDto) {
     await this.authService.signup(signup);
     return {
       message: 'User created Successfully',
