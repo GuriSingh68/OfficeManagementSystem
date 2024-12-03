@@ -43,7 +43,6 @@ const Login = () => {
 
   return (
     <div>
-      {/* <Header /> */}
       <div className="min-h-screen bg-gray-100 rounded shadow flex items-center justify-center">
         <div className="w-full max-w-md bg-white p-6 rounded shadow">
           <h1 className="text-2xl font-bold text-purple-700 text-center">Login</h1>

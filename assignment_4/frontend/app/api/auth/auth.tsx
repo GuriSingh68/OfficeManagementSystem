@@ -1,3 +1,4 @@
+"use client"
 import {jwtDecode} from 'jwt-decode';
 
 export const isAuthenticated=() =>{
@@ -10,12 +11,26 @@ export const getUserRole =  (): string | null => {
       const token = localStorage.getItem('accessToken');
       if (token) {
         try {
-          const decoded: any = jwtDecode(token); 
-          return decoded.role || null; 
+          const decode: any = jwtDecode(token); 
+          return decode.role || null; 
         } catch (error) {
-          console.error('Failed to decode token:', error);
+          console.log('Failed to decode token:', error);
         }
       }
     }
     return null;
   };
+
+  export const getUserId = () : string | null => {
+    const token =localStorage.getItem("accessToken");
+    if(token){
+      try {
+        const decode : any = jwtDecode(token)
+        return decode.userId 
+      } catch (error) {
+        console.log('Failed to decode token:', error);
+
+      }
+    }
+    return null;
+  }

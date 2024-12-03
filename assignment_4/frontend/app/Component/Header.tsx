@@ -9,7 +9,6 @@ const Header = () => {
     <header className="bg-purple-500 text-white py-2 rounded">
       <nav className="flex justify-between">
         <div>
-          <Link href="/" className="text-lg font-bold mt-4 p-5">Home</Link>
           <Link href="/about" className="text-lg font-bold">About</Link>
         </div>
         <div className="flex items-center">

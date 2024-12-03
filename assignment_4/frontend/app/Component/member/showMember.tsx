@@ -1,5 +1,5 @@
 "use client"
-import { getUserRole } from '@/app/api/auth/auth';
+import { getUserId, getUserRole } from '@/app/api/auth/auth';
 import { deleteUsers, fetchUsers, updateUsers } from '@/app/api/users/userApi';
 import { UserInterface } from '@/app/interface/userInterface'
 import React, { useEffect, useState } from 'react'
@@ -10,6 +10,7 @@ const ShowMembers = () => {
     const [editMode, setEditMode] = useState<Boolean>(false);
     const [editable, setEditable] = useState<Partial<UserInterface>[]>([]);
     const role = getUserRole();
+    const user= getUserId();
     useEffect(() => {
         try {
             const loadUsers = async () => {
@@ -24,6 +25,10 @@ const ShowMembers = () => {
     }, [])
 
     const handleDelete = async (id: string) => {
+        if(id===user){
+            alert("You cannot delete your own account.");
+            return;
+        }
         try {
             await deleteUsers(id);
             setUsers((prev) => prev.filter((user) => user._id !== id));
@@ -41,13 +46,16 @@ const ShowMembers = () => {
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
-        const { name, value } = e.target;
+        if(user!=id)
+      {  const { name, value } = e.target;
         setEditable((prevUsers) =>
             prevUsers.map((user) =>
                 user._id === id ? { ...user, [name]: value } : user
             )
         );
-
+}
+alert("You cannot edit your own details")
+return;
     }
     const handleSave = async (id: string) => {
         const update_user = editable.find((user) => user._id === id);

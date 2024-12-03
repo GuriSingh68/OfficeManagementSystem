@@ -190,17 +190,17 @@ const ShowEvents = () => {
                     </button>
                 </div>
             ) : (
-                // Event list when the form is not visible
+                
                 <table className="table-auto w-full border-collapse border border-gray-300 mt-6">
                     <thead>
                         <tr>
-                            <th className="border px-4 py-2">Title</th>
+                            <th className="border px-4 py-2 ">Title</th>
                             <th className="border px-4 py-2">Description</th>
                             <th className="border px-4 py-2">Start Date</th>
                             <th className="border px-4 py-2">End Date</th>
                             <th className="border px-4 py-2">Mode</th>
                             <th className="border px-4 py-2">Link</th>
-                            <th className="border px-4 py-2">Actions</th>
+                         {role==="admin" ?   <th className="border px-4 py-2">Actions</th> : null}
                         </tr>
                     </thead>
                     <tbody>
@@ -220,10 +220,11 @@ const ShowEvents = () => {
                                         "N/A"
                                     )}
                                 </td>
+                                { role==="admin" ?
                                 <td className="border px-4 py-2">
                         <button onClick={() => handle_delete(e._id)}  className="bg-red-500 text-white px-4 py-2 rounded m-3">Delete</button>
-                                </td>
-                            </tr>
+                                </td>: null}
+                            </tr> 
                         ))}
                     </tbody>
                 </table>

@@ -2,7 +2,6 @@
 import Header from "@/app/Component/Header";
 import Dashboard from "./dashboard";
 import { isAuthenticated } from "@/app/api/auth/auth";
-import NotAuthenticated from "@/app/Component/NotAuthenticated";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 

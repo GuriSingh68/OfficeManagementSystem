@@ -66,3 +66,17 @@ export const createEvent=async(eventDetails: EventDetails[]) => {
         }
     }
 }
+
+export const fetchEventsById = async (_id:string) => {
+    const data = await fetch(`${URL}/events/${_id}`,{
+        method:"GET",
+        headers:{
+            Authoization:`Beaer ${localStorage.getItem("accessToken")}`
+        }
+    });
+    const res=await data.json();
+    if(!res){
+        throw new Error("Error");
+    }
+    return res;
+}
