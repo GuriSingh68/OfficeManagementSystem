@@ -1,0 +1,7 @@
+{
+  "name": "officemgt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

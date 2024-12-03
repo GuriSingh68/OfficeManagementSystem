@@ -1,0 +1,32 @@
+/* Center the container */
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .signup-title {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #6b46c1; 
+    margin-bottom: 20px;
+  }
+  
+  .signup-form ion-item {
+    margin-bottom: 15px;
+  }
+  
+  .signup-button {
+    background: #6b46c1;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .signup-button:hover {
+    background: #553c9a; 
+  }
+  
