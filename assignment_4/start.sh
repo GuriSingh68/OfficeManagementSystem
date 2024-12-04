@@ -1,14 +1,17 @@
 #!/bin/bash
 
-######Start Backend Server#######
+# Get the current directory
+SCRIPT_DIR=$(pwd)
 
+####Startting Backend Server####
 echo "Starting Backend Server"
-cd /d/BrightSpace/WebDevProject/EGEN52006/assignment_4/Backend
+cd "$SCRIPT_DIR/Backend" || exit
 npm run start &
 
+####Starting frontend Server####
 
 echo "Starting Frontend Server"
-cd /d/BrightSpace/WebDevProject/EGEN52006/assignment_4/frontend
+cd "$SCRIPT_DIR/frontend" || exit
 pnpm run dev --port "3001" &
 
 wait
