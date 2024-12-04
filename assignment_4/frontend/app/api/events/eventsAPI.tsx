@@ -67,14 +67,15 @@ export const createEvent=async(eventDetails: EventDetails[]) => {
     }
 }
 
-export const fetchEventsById = async (_id:string) => {
-    const data = await fetch(`${URL}/events/${_id}`,{
+export const fetchEventsById = async (id:string) => {
+    const data = await fetch(`${URL}/events/${id}`,{
         method:"GET",
         headers:{
-            Authoization:`Beaer ${localStorage.getItem("accessToken")}`
+            Authorization:`Bearer ${localStorage.getItem("accessToken")}`
         }
     });
     const res=await data.json();
+    console.log(res)
     if(!res){
         throw new Error("Error");
     }

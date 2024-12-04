@@ -2,74 +2,76 @@
 import { getUserRole } from '@/app/api/auth/auth';
 import { createEvent, delteEvents, fetchEvents } from '@/app/api/events/eventsAPI';
 import { EventDetails } from '@/app/interface/eventsInterface'
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const ShowEvents = () => {
-    const [events,setEvents]=useState<EventDetails[]>([]);
+    const [events, setEvents] = useState<EventDetails[]>([]);
     const [newEvent, setNewEvent] = useState<any>({
         title: "",
         startDate: "",
         endDate: "",
         attendeesEmails: [],
         description: "",
-        isOnline: false,
+        isOnline: true,
         eventLink: "",
     });
-    const [createToggle,setCreateToggle]=useState<Boolean>(false);
-    const role=getUserRole();
+    const router =useRouter();
+    const [createToggle, setCreateToggle] = useState<Boolean>(false);
+    const role = getUserRole();
     useEffect(() => {
         try {
-            const load_events = async() => {
+            const load_events = async () => {
                 const data = await fetchEvents();
-                if(!data){
+                if (!data) {
                     throw new Error("Nothing found");
                 }
                 setEvents(data);
-            };load_events()
+            }; load_events()
         } catch (error) {
             console.error(`Err - ${error}`);
         }
-     },[])
+    }, [])
 
-     const handle_delete=async(id:string) => {
+    const handle_delete = async (id: string) => {
         try {
             await delteEvents(id);
-        setEvents((prev) => prev.filter((prevUsers) => prevUsers._id!==id));
-        alert("event removed successfully");
+            setEvents((prev) => prev.filter((prevUsers) => prevUsers._id !== id));
+            alert("event removed successfully");
         } catch (error) {
             console.log(`Error - ${error}`)
         }
-     }
+    }
 
-     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const {name,value}=e.target;
-        setNewEvent((prev: any) =>({
-            ...prev,[name]:value
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setNewEvent((prev: any) => ({
+            ...prev, [name]: value
         }))
-     }
-     const validate_event = (event: EventDetails) => {
+    }
+    const validate_event = (event: EventDetails) => {
         const { title, startDate, endDate, attendeesEmails, isOnline } = event;
-        
+
         if (!title || !startDate || !endDate || !attendeesEmails.length || isOnline === undefined) {
             alert("Fill all details");
             return false;
         }
-    
+
         return true;
     };
-     const event_creation = async() => {
-        if(role==="admin"){
+    const event_creation = async () => {
+        if (role === "admin") {
             console.log(`This is new event`)
             console.log(newEvent)
             if (validate_event(newEvent)) {
                 try {
-                    const createdEvent = await createEvent(newEvent);  
+                    const createdEvent = await createEvent(newEvent);
                     console.log("Created Event:", createdEvent);
-    
+
                     if (createdEvent && createdEvent._id) {
                         alert("Event created successfully");
-                        setEvents((prev) => [...prev, createdEvent]);
-    
+                        setEvents((prev) => (Array.isArray(prev) ? [...prev, createdEvent] : [createdEvent]));
+
                         setNewEvent({
                             title: "",
                             startDate: "",
@@ -79,6 +81,7 @@ const ShowEvents = () => {
                             isOnline: false,
                             eventLink: "",
                         });
+                        setCreateToggle(!createToggle)
                     } else {
                         alert("Failed to create event");
                     }
@@ -90,11 +93,11 @@ const ShowEvents = () => {
         } else {
             alert("Only admins can create events.");
         }
-     }
+    }
 
-  return (
-    <div>
-    <div className="mb-4">
+    return (
+        <div>
+            <div className="mb-4">
                 {role === "admin" && (
                     <button
                         onClick={() => setCreateToggle((prev) => !prev)}
@@ -130,10 +133,10 @@ const ShowEvents = () => {
                             type="text"
                             name="attendeesEmails"
                             value={newEvent.attendeesEmails.join(", ")}
-                            onChange={(e) => 
+                            onChange={(e) =>
                                 setNewEvent((prev: any) => ({
                                     ...prev,
-                                    attendeesEmails: e.target.value.split(",").map((email: string) => email.trim()) 
+                                    attendeesEmails: e.target.value.split(",").map((email: string) => email.trim())
                                 }))
                             }
                             placeholder="Enter Attendees' Emails , "
@@ -190,7 +193,7 @@ const ShowEvents = () => {
                     </button>
                 </div>
             ) : (
-                
+
                 <table className="table-auto w-full border-collapse border border-gray-300 mt-6">
                     <thead>
                         <tr>
@@ -198,39 +201,49 @@ const ShowEvents = () => {
                             <th className="border px-4 py-2">Description</th>
                             <th className="border px-4 py-2">Start Date</th>
                             <th className="border px-4 py-2">End Date</th>
-                            <th className="border px-4 py-2">Mode</th>
                             <th className="border px-4 py-2">Link</th>
-                         {role==="admin" ?   <th className="border px-4 py-2">Actions</th> : null}
+                            {role === "admin" ? <th className="border px-4 py-2">Actions</th> : null}
                         </tr>
                     </thead>
                     <tbody>
-                        {events.map((e) => (
-                            <tr key={e._id} className="border">
-                                <td className="border px-4 py-2">{e.title}</td>
-                                <td className="border px-4 py-2">{e.description}</td>
-                                <td className="border px-4 py-2">{new Date(e.startDate).toLocaleString()}</td>
-                                <td className="border px-4 py-2">{new Date(e.endDate).toLocaleString()}</td>
-                                <td className="border px-4 py-2">{e.isOnline ? "Online" : "Offline"}</td>
-                                <td className="border px-4 py-2">
-                                    {e.eventLink ? (
-                                        <a href={e.eventLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-                                            Event Link
-                                        </a>
-                                    ) : (
-                                        "N/A"
+                        {Array.isArray(events) && events.length !== 0 ? (
+                            events.map((e) => (
+                                <tr key={e._id} className="border">
+                                    <td className="border px-4 py-2">{e.title}</td>
+                                    <td className="border px-4 py-2">{e.description}</td>
+                                    <td className="border px-4 py-2">{new Date(e.startDate).toLocaleString()}</td>
+                                    <td className="border px-4 py-2">{new Date(e.endDate).toLocaleString()}</td>
+                                    <td className="border px-4 py-2">
+                                        {e.eventLink ? (
+                                            <a href={e.eventLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                                                Event Link
+                                            </a>
+                                        ) : (
+                                            "N/A"
+                                        )}
+                                    </td>
+                                    {role === "admin" && (
+                                        <td className="border px-4 py-2">
+                                            <button
+                                                onClick={() => handle_delete(e._id)}
+                                                className="bg-red-500 text-white px-4 py-2 rounded m-3"
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
                                     )}
-                                </td>
-                                { role==="admin" ?
-                                <td className="border px-4 py-2">
-                        <button onClick={() => handle_delete(e._id)}  className="bg-red-500 text-white px-4 py-2 rounded m-3">Delete</button>
-                                </td>: null}
-                            </tr> 
-                        ))}
+                                </tr>
+                            ))
+                        ) : (
+                            <tr className="border">
+                                <td className="border px-4 py-2">List is empty</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             )}
         </div>
-  )
+    )
 }
 
 export default ShowEvents;
