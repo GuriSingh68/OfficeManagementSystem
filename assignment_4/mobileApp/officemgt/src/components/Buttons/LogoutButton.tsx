@@ -1,4 +1,3 @@
-// Button/Logout.tsx
 import React from 'react';
 import { IonButton } from '@ionic/react';
 import { useHistory } from 'react-router-dom';

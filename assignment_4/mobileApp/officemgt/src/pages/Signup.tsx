@@ -61,6 +61,7 @@ const Signup: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>Signup</IonTitle>
+          <IonButton >Login</IonButton>
         </IonToolbar>
       </IonHeader>
       <IonContent className="signup-page">

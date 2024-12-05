@@ -48,7 +48,6 @@ const Login: React.FC = () => {
       setIsAuthenticated(true);
       history.push('/dashboard');
     } catch (err: any) {
-      // Show error message in toast
       setToastMessage(err.message || 'Something went wrong');
       setShowToast(true);
     }
@@ -57,11 +56,11 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <Header />
-      <IonContent className="login-page">
-        <div className="ion">
-          <h1 className="login-title">Login</h1>
+      <IonContent class="login-page">
+        <div>
+          <h1>Login</h1>
 
-          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <form onSubmit={handleSubmit}>
             <IonItem className="inputForm">
               <IonLabel position="floating">Email</IonLabel>
               <IonInput
@@ -82,19 +81,10 @@ const Login: React.FC = () => {
               />
             </IonItem>
 
-            <IonButton
-              type="submit"
-              expand="block"
-              className="bg-purple-500 text-white hover:bg-purple-700"
-            >
-              Login
-            </IonButton>
+            <IonButton type="submit">Login</IonButton>
           </form>
         </div>
-        <IonContent>
-        </IonContent>
 
-        {/* Toast for Error Messages */}
         <IonToast
           isOpen={showToast}
           message={toastMessage}

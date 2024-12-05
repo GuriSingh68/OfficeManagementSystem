@@ -50,6 +50,9 @@ import EventDetailsPage from './pages/Events/eventsDetails';
 import CreateEvent from './pages/Events/CreateEvent';
 import User from './pages/Settings/User';
 import { homeOutline, personCircleOutline, settingsOutline } from 'ionicons/icons';
+import Tasks from './pages/Task/Task';
+import CreateTasks from './pages/Task/CreateTasks';
+import TaskDetailsPage from './pages/Task/TaskDetailsPage';
 
 setupIonicReact();
 
@@ -65,6 +68,9 @@ const App: React.FC = () => (
           <PrivateRoute path="/events" component={Events} exact />
           <PrivateRoute path="/events/:id" component={EventDetailsPage} exact />
           <PrivateRoute path="/create-event" component={CreateEvent} exact />
+          <PrivateRoute path="/tasks" component={Tasks} exact />
+          <PrivateRoute path="/tasks/:id" component={TaskDetailsPage} exact />
+          <PrivateRoute path="/create-tasks" component={CreateTasks} exact />
           <PrivateRoute path="/settings" component={User} exact />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">

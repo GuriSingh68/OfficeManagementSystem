@@ -1,6 +1,5 @@
 import { IonButton, IonCard, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonPage } from '@ionic/react'
-import React, { useEffect, useState } from 'react'
-import Header from '../../components/Header'
+import  { useEffect, useState } from 'react'
 import LogoutButton from '../../components/Buttons/LogoutButton'
 import { UserInterface } from '../../interface/UserDetails'
 import {  deleteUsers, fetchUsers } from './userApi'
@@ -32,6 +31,7 @@ const User = () => {
             const response = await deleteUsers(id);
             if (response) {
                 console.log('Event deleted successfully');
+                alert("Redirecting to dashboard")
                 setUsers(users.filter(user => user._id!==id))
                history.push("/dashboard")
             }
@@ -46,6 +46,7 @@ const User = () => {
         </IonHeader>
     <IonContent>
             <div className="events-container">
+                <h2 className='event-title'>Welcome to admin setting</h2>
                 {users.length > 0 ? (
                     users.map((user) => (
                         <IonCard key={user._id} className="event-card">
