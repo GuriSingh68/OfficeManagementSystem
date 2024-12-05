@@ -23,7 +23,7 @@ const TaskDetailsPage: React.FC = () => {
             } catch (error) {
                 console.error("Error fetching task details:", error);
                 history.push("/dashboard");
-                // alert("Failed to fetch task details!");
+                 alert("Failed to fetch task details!");
             }
         };
         fetchTaskDetails();
