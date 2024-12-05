@@ -10,7 +10,6 @@ const Dashboard = () => {
     return (
         <div className="flex h-screen">
 
-            {/* Sidebar */}
             <aside className="w-72 bg-purple-100 h-full p-8 shadow-lg">
                 <nav className="space-y-4 text-lg">
                     <h2 className="text-xl font-bold text-gray-800 mb-8">{`Welcome ${role}`}</h2>
@@ -34,18 +33,13 @@ const Dashboard = () => {
                 </nav>
             </aside>
 
-            {/* Main Content */}
             <div className="flex-grow p-10">
                 <h2 className="text-4xl font-bold text-gray-800 mb-8">Dashboard</h2>
 
-                {/* Two Columns Layout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* ShowTask Section */}
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <ShowTask />
                     </div>
-
-                    {/* DashboardEvents Section */}
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <DashboardEvents />
                     </div>

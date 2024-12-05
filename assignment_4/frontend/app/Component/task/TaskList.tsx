@@ -63,7 +63,6 @@ const TaskList = () => {
     loadTasks();
   }, []);
 
-  // Handle the task deletion
   const handleDelete = async (taskId: string) => {
     if (role !== "admin") {
       alert("Admin role required to delete tasks.");
@@ -80,17 +79,14 @@ const TaskList = () => {
     }
   };
 
-  // Handle the task update (Edit)
   const handleUpdate = async (taskId: string) => {
     const role=getUserRole();
     if(role==="user")
      { try {
-        // Send the updated status to the backend
         await updateTask(taskId, { status: editTask.status });
 
-        // Fetch the updated list of tasks from the backend
         const updatedTasks = await fetchTasks();
-        setTasks(updatedTasks); // Update the task list in the state
+        setTasks(updatedTasks); 
 
         alert("Task updated successfully!");
       } catch (error) {
@@ -103,7 +99,6 @@ const TaskList = () => {
 
 
 
-  // Handle the task creation
   const handleCreateTask = async () => {
     if (!newTask.taskName || !newTask.description || !newTask.assignee || !newTask.priority || !newTask.start_date || !newTask.end_date || !newTask.project) {
       alert("Please fill in all the fields!");
@@ -137,7 +132,6 @@ const TaskList = () => {
     <div className="container mx-auto p-4">
       <h2 className="text-3xl font-bold text-center text-purple-700 mb-6">Task List</h2>
 
-      {/* Create Task Section - Only for Admin */}
       {role === "admin" && (
         <div className="mb-6">
           <h3 className="text-2xl font-semibold text-gray-800">Create New Task</h3>
@@ -165,7 +159,7 @@ const TaskList = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">Assigned
+            <label className="block text-gray-700 font-semibold mb-2">Assignee
               <input
                 type="text"
                 placeholder="Assigned"
