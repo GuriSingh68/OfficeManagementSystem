@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonBackButton, IonButton, IonCard, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
 import { EventDetails } from '../../interface/EventDetails';
 import { delteEvents, fetchEventsById } from './eventsApi';
@@ -39,7 +39,9 @@ const EventDetailsPage: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonBackButton>Go Back</IonBackButton>
+                <IonButtons slot="start">
+            <IonBackButton defaultHref="/dashboard" text="Go Back" />
+        </IonButtons>
                 </IonToolbar>
             </IonHeader>
             <IonContent>

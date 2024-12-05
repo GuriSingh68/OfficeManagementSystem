@@ -48,22 +48,38 @@ import Dashboard from './pages/Dashboard/dashboard';
 import Events from './pages/Events/Events';
 import EventDetailsPage from './pages/Events/eventsDetails';
 import CreateEvent from './pages/Events/CreateEvent';
+import User from './pages/Settings/User';
+import { homeOutline, personCircleOutline, settingsOutline } from 'ionicons/icons';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+  <IonReactRouter>
+    <IonTabs>
       <IonRouterOutlet>
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Redirect exact from="/" to="/login" />
+        <Route exact path="/signup" component={Signup} />
           <PrivateRoute path="/dashboard" component={Dashboard} exact />
           <PrivateRoute path="/events" component={Events} exact />
           <PrivateRoute path="/events/:id" component={EventDetailsPage} exact />
           <PrivateRoute path="/create-event" component={CreateEvent} exact />
+          <PrivateRoute path="/settings" component={User} exact />
       </IonRouterOutlet>
-    </IonReactRouter>
-      </IonApp>
+      <IonTabBar slot="bottom">
+        <IonTabButton tab="dashboard" href="/dashboard">
+          <IonIcon icon={homeOutline} />
+          <IonLabel>Dashboard</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="settings" href="/settings">
+          <IonIcon icon={settingsOutline} />
+          <IonLabel>Settings</IonLabel>
+        </IonTabButton>
+      </IonTabBar>
+    </IonTabs>
+  </IonReactRouter>
+</IonApp>
 );
 
 export default App;

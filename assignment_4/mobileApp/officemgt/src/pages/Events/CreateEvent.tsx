@@ -137,6 +137,7 @@ const CreateEvent: React.FC = () => {
                 placeholder="Enter email"
                 value={email}
                 onIonChange={(e) => setEmail(e.detail.value!)}
+                required
               />
               <IonButton slot="end" onClick={addEmail}>
                 <IonIcon icon={addOutline} />

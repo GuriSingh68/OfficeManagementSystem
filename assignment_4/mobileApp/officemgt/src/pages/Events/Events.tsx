@@ -14,17 +14,15 @@ const Events: React.FC = () => {
         const loadEvents = async () => {
             try {
                 const res = await fetchEvents();
-                if (!res) {
-                    console.log('Error in fetching events');
-                    return;
+                if (Array.isArray(res)) {
+                    setEvents(res);
+                } else {
+                    console.log(' empty array.');
+                    setEvents([]); 
                 }
-                const sortedEvents = res.sort(
-                    (a: EventDetails, b: EventDetails) =>
-                        new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-                );
-                setEvents(sortedEvents);
             } catch (error) {
-                console.log('Error fetching events:', error);
+                console.error('Error fetching events:', error);
+                setEvents([]); 
             }
         };
         loadEvents();
@@ -33,25 +31,29 @@ const Events: React.FC = () => {
     return (
         <IonContent>
             <div className="events-container">
-                {events.map((event) => (
-                    <IonCard key={event._id} className="event-card">
-                        <IonCardHeader>
-                            <IonCardTitle className="event-title">{event.title}</IonCardTitle>
-                        </IonCardHeader>
-                        <p className="event-description">{event.description}</p>
-                        <IonButton
-                            color="primary"
-                            href={event.eventLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Event Link
-                        </IonButton>
-                        <IonButton color="secondary" onClick={() => history.push(`/events/${event._id}`)}>
-                            View Details
-                        </IonButton>
-                    </IonCard>
-                ))}
+                {events.length > 0 ? (
+                    events.map((event) => (
+                        <IonCard key={event._id} className="event-card">
+                            <IonCardHeader>
+                                <IonCardTitle className="event-title">{event.title}</IonCardTitle>
+                            </IonCardHeader>
+                            <p className="event-description">{event.description}</p>
+                            <IonButton
+                                color="primary"
+                                href={event.eventLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Event Link
+                            </IonButton>
+                            <IonButton color="secondary" onClick={() => history.push(`/events/${event._id}`)}>
+                                View Details
+                            </IonButton>
+                        </IonCard>
+                    ))
+                ) : (
+                    <p>No events available. Create one!</p>
+                )}
                 <IonButton color="primary" onClick={() => history.push('/create-event')}>
                     Create Event
                 </IonButton>

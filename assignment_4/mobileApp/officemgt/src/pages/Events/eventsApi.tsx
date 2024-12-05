@@ -14,7 +14,7 @@ export const fetchEvents = async () => {
                 }
             });
             const res= await data.json();
-            console.log(res)
+            // console.log(res)
             if(!res){
                 throw new Error(`Failed to fetch - `)
             }
@@ -34,7 +34,7 @@ export const delteEvents=async(id:string) => {
                     }
                 })
                 const res=await data.json();
-                console.log(res);
+                console.log(`Delete events - ${res}`);
                 if(!res){
                     throw new Error("Err")
                 }
