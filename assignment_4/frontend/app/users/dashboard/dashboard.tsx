@@ -22,8 +22,8 @@ const Dashboard = () => {
                     <Link href="/users/task" passHref className="block py-3 text-gray-700 hover:bg-red-200 rounded-lg">
                         Tasks
                     </Link>
-                    <Link href="#" passHref className="block py-3 text-gray-700 hover:bg-red-200 rounded-lg">
-                        Report
+                    <Link href="/users/feedback" passHref className="block py-3 text-gray-700 hover:bg-red-200 rounded-lg">
+                        Feedback
                     </Link>
                     {role === "admin" ? (
                         <Link href="/users/member" passHref className="block py-3 text-gray-700 hover:bg-red-200 rounded-lg">
