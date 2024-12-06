@@ -45,7 +45,7 @@ const TaskDetailsPage: React.FC = () => {
     };
     return (
         <IonPage>
-            <IonHeader>
+             <IonHeader>
                 <IonToolbar>
                 <IonButtons slot="start">
             <IonBackButton defaultHref="/dashboard" text="Go Back" />

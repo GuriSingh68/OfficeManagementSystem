@@ -62,7 +62,7 @@ const Login: React.FC = () => {
 
           <form onSubmit={handleSubmit}>
             <IonItem className="inputForm">
-              <IonLabel position="floating">Email</IonLabel>
+              <IonLabel position="fixed">Email</IonLabel>
               <IonInput
                 value={email}
                 onIonChange={(e) => setEmail(e.detail.value!)}
@@ -72,7 +72,7 @@ const Login: React.FC = () => {
             </IonItem>
 
             <IonItem className="inputForm">
-              <IonLabel position="floating">Password</IonLabel>
+              <IonLabel position="fixed">Password</IonLabel>
               <IonInput
                 value={password}
                 onIonChange={(e) => setPassword(e.detail.value!)}

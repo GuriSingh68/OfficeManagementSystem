@@ -45,6 +45,7 @@ export const createTask = async (taskData: any) => {
             body: JSON.stringify(taskData),
         });
         const data = await res.json();
+        console.log(data)
         if (!res.ok) throw new Error(data.message || 'Failed to create task');
         return data;
     }

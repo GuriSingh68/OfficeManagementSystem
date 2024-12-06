@@ -17,4 +17,9 @@ npm install -g pnpm
 pnpm install
 pnpm run dev --port "3001" &
 
+echo "Starting Mobile Applicatio"
+cd "$SCRIPT_DIR/mobileApp/officemgt" || exit
+npm install -g @ionic/cli
+ionic serve
+
 wait

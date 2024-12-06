@@ -53,10 +53,12 @@ import { homeOutline, personCircleOutline, settingsOutline } from 'ionicons/icon
 import Tasks from './pages/Task/Task';
 import CreateTasks from './pages/Task/CreateTasks';
 import TaskDetailsPage from './pages/Task/TaskDetailsPage';
+import { useAuth } from './context/AuthContext';
 
 setupIonicReact();
 
 const App: React.FC = () => (
+  
   <IonApp>
   <IonReactRouter>
     <IonTabs>
@@ -73,16 +75,6 @@ const App: React.FC = () => (
           <PrivateRoute path="/create-tasks" component={CreateTasks} exact />
           <PrivateRoute path="/settings" component={User} exact />
       </IonRouterOutlet>
-      <IonTabBar slot="bottom">
-        <IonTabButton tab="dashboard" href="/dashboard">
-          <IonIcon icon={homeOutline} />
-          <IonLabel>Dashboard</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="settings" href="/settings">
-          <IonIcon icon={settingsOutline} />
-          <IonLabel>Settings</IonLabel>
-        </IonTabButton>
-      </IonTabBar>
     </IonTabs>
   </IonReactRouter>
 </IonApp>

@@ -46,7 +46,7 @@ const Events: React.FC = () => {
                 ) : (
                     <p>No events available. Create one!</p>
                 )}
-                <IonButton color="primary" onClick={() => history.push('/create-event')}>
+                <IonButton color="primary" onClick={() => history.push('/create-tasks')}>
                     Create Tasks
                 </IonButton>
             </div>

@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    gap: 16px; 
+    flex-wrap: wrap; 
+  }
+  
+  .card {
+    flex: 1; 
+    min-width: 250px; 
+    padding: 16px; 
+    border-radius: 8px;
+  }
+  
+  .card.dashboard {
+    background-color: purple;
+    color: white;
+  }
+  
+  .card.tasks {
+    background-color: lightsteelblue;
+    color: black;
+  }
+  
+  .card.events {
+    background-color: lightsteelblue;
+    color: black;
+  }
+  

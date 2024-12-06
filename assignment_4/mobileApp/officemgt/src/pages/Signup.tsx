@@ -69,7 +69,7 @@ const Signup: React.FC = () => {
           <h1 className="signup-title">Sign Up</h1>
           <form onSubmit={handleSubmit} className="signup-form">
             <IonItem>
-              <IonLabel position="floating">First Name</IonLabel>
+              <IonLabel position="fixed">First Name</IonLabel>
               <IonInput
                 value={formData.firstName}
                 onIonChange={(e) => setFormData({ ...formData, firstName: e.detail.value! })}
@@ -78,7 +78,7 @@ const Signup: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="floating">Last Name</IonLabel>
+              <IonLabel position="fixed">Last Name</IonLabel>
               <IonInput
                 value={formData.lastName}
                 onIonChange={(e) => setFormData({ ...formData, lastName: e.detail.value! })}
@@ -87,7 +87,7 @@ const Signup: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="floating">Email</IonLabel>
+              <IonLabel position="fixed">Email</IonLabel>
               <IonInput
                 type="email"
                 value={formData.email}
@@ -97,7 +97,7 @@ const Signup: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="floating">Mobile Number</IonLabel>
+              <IonLabel position="fixed">Mobile Number</IonLabel>
               <IonInput
                 type="tel"
                 value={formData.mobile}
@@ -107,7 +107,7 @@ const Signup: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="floating">Date of Birth</IonLabel>
+              <IonLabel position="fixed">Date of Birth</IonLabel>
               <IonInput
                 type="date"
                 value={formData.dob}
@@ -117,7 +117,7 @@ const Signup: React.FC = () => {
             </IonItem>
 
             <IonItem>
-              <IonLabel position="floating">Password</IonLabel>
+              <IonLabel position="fixed">Password</IonLabel>
               <IonInput
                 type="password"
                 value={formData.password}

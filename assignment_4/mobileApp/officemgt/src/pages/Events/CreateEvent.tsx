@@ -14,6 +14,7 @@ import {
   IonToggle,
   IonToolbar,
   IonIcon,
+  IonBackButton,
 } from "@ionic/react";
 import { addOutline } from "ionicons/icons";
 import { EventDetails } from "../../interface/EventDetails";
@@ -82,14 +83,15 @@ const CreateEvent: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Create Event</IonTitle>
+        <IonBackButton defaultHref="/dashboard" text="Go Back" />
+        <h2>Create Tasks</h2>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
         <form onSubmit={handleSubmit}>
           <IonList className="ion-padding">
             <IonItem>
-              <IonLabel position="floating">Title</IonLabel><br/>
+              <IonLabel position="fixed">Title</IonLabel><br/>
               <IonInput
                 value={events.title}
                 onIonChange={(e) =>
@@ -99,7 +101,7 @@ const CreateEvent: React.FC = () => {
               />
             </IonItem>
             <IonItem>
-              <IonLabel position="floating">Description</IonLabel><br/>
+              <IonLabel position="fixed">Description</IonLabel><br/>
               <IonInput
                 value={events.description}
                 onIonChange={(e) =>
@@ -109,7 +111,7 @@ const CreateEvent: React.FC = () => {
               />
             </IonItem>
             <IonItem>
-              <IonLabel position="floating">Start Date</IonLabel><br/>
+              <IonLabel position="fixed">Start Date</IonLabel><br/>
               <IonInput
                 type="date"
                 value={events.startDate}
@@ -120,7 +122,7 @@ const CreateEvent: React.FC = () => {
               />
             </IonItem>
             <IonItem>
-              <IonLabel position="floating">End Date</IonLabel><br/>
+              <IonLabel position="fixed">End Date</IonLabel><br/>
               <IonInput
                 type="date"
                 value={events.endDate}
@@ -131,7 +133,7 @@ const CreateEvent: React.FC = () => {
               />
             </IonItem>
             <IonItem>
-              <IonLabel position="floating">Attendee Email</IonLabel><br/>
+              <IonLabel position="fixed">Attendee Email</IonLabel><br/>
               <IonInput
                 type="email"
                 placeholder="Enter email"
@@ -163,7 +165,7 @@ const CreateEvent: React.FC = () => {
             </IonItem>
             {events.isOnline && (
               <IonItem>
-                <IonLabel position="floating">Event Link</IonLabel>
+                <IonLabel position="fixed">Event Link</IonLabel>
                 <IonInput
                   type="url"
                   placeholder="Enter online event link"
