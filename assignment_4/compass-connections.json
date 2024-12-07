@@ -1,0 +1,26 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "e749f71f-77bd-4ce8-86da-68767e012fdd",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1733533832124"
+        }
+      },
+      "favorite": {
+        "name": "localhost:27017"
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/OfficeManagement",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}
