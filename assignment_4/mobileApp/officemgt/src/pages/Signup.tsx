@@ -132,7 +132,6 @@ const Signup: React.FC = () => {
                 value={formData.role}
                 onIonChange={(e) => setFormData({ ...formData, role: e.detail.value })}
               >
-                <IonSelectOption value="user">User</IonSelectOption>
                 <IonSelectOption value="admin">Admin</IonSelectOption>
               </IonSelect>
             </IonItem>

@@ -66,7 +66,7 @@ const TaskDetailsPage: React.FC = () => {
                         <p><strong>Priority:</strong> {tasks.priority}</p>
 
                         <IonButton color="danger" onClick={handleDeleteTask}>
-                            Delete Event
+                            Delete Tasks
                         </IonButton>
                     </IonCard>
                 </div>
