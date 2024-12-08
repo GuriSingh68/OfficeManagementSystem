@@ -15,6 +15,7 @@ import {
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './signup.css';
+import Header from '../components/Header';
 
 const Signup: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -60,8 +61,7 @@ const Signup: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Signup</IonTitle>
-          <IonButton >Login</IonButton>
+          <Header />
         </IonToolbar>
       </IonHeader>
       <IonContent className="signup-page">

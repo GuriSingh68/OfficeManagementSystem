@@ -10,11 +10,11 @@ const Header: React.FC = () => {
     <IonHeader>
       <IonToolbar color="primary">
         <IonButtons slot="start">
-          <Link to="/about">
+          {/* <Link to="/about">
             <IonButton fill="clear" color="light">
               About
             </IonButton>
-          </Link>
+          </Link> */}
         </IonButtons>
         <IonButtons slot="end">
           {isLoggedIn ? (

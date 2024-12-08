@@ -14,6 +14,7 @@ const User = () => {
         const loadUsers = async () => {
             try {
                 const response = await fetchUsers();
+                console.log(response)
                 if (response)
                     setUsers(response);
                 else {
